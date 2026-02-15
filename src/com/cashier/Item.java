@@ -1,43 +1,49 @@
 package com.cashier;
 
 public class Item {
-  final int max = 14;
-  String[] namaItem = new String[max];
-  int[] hargaItem = new int[max];
+  private int max;
+  public String[] namaItem;
+  public int[] hargaItem;
 
-  void daftarMenu() {
+  // constructor
+  public Item(int storage) {
+    this.max = storage;
+    this.namaItem = new String[max];
+    this.hargaItem = new int[max];
+  }
+
+  public void tampilkanMenu(String[] nama, int[] harga) {
+    for (int i = 0; i <= nama.length; i++) {
+      if (nama[i] != null) {
+        System.out.println((i + 1) + ". " + nama[i] + harga[i]);
+      }
+    }
+  }
+
+  public void tambahItem(int nomer, String nama, int harga) {
+    if (nomer >= 0 && nomer < max) {
+      this.namaItem[nomer] = nama;
+      this.hargaItem[nomer] = harga;
+    }
+  }
+
+  public void listMenu() {
     // menu minuman
-    namaItem[0] = "air putih";
-    hargaItem[0] = 3_000;
-    namaItem[1] = "es teh";
-    hargaItem[1] = 4_000;
-    namaItem[2] = "kopi hitam";
-    hargaItem[2] = 5_000;
-    namaItem[3] = "kopi susu";
-    hargaItem[3] = 6_000;
-    namaItem[4] = "hot chocolate";
-    hargaItem[4] = 7_000;
-    namaItem[5] = "es cappucino";
-    hargaItem[5] = 5_000;
-    namaItem[6] = "es jeruk";
-    hargaItem[6] = 5_000;
-    namaItem[7] = "susu jahe";
-    hargaItem[7] = 8_000;
-
+    tambahItem(0, "air putih", 3_000);
+    tambahItem(1, "es teh", 4_000);
+    tambahItem(2, "kopi hitam", 5_000);
+    tambahItem(3, "kopi susu", 6_000);
+    tambahItem(4, "hot chocolate", 7_000);
+    tambahItem(5, "es cappucino", 5_000);
+    tambahItem(6, "es jeruk", 5_000);
+    tambahItem(7, "susu jahe", 8_000);
     // menu makanan
-    namaItem[8] = "kentang goreng";
-    hargaItem[8] = 9_000;
-    namaItem[9] = "roti bakar";
-    hargaItem[9] = 12_000;
-    namaItem[10] = "pisang goreng";
-    hargaItem[10] = 8_000;
-    namaItem[11] = "indomie goreng";
-    hargaItem[11] = 6_000;
-    namaItem[12] = "indomie rebus";
-    hargaItem[12] = 6_000;
-    namaItem[13] = "sosis goreng";
-    hargaItem[13] = 7_000;
-    namaItem[14] = "pancong";
-    hargaItem[14] = 13_000;
+    tambahItem(8, "kentang goreng", 9_000);
+    tambahItem(9, "roti bakar", 12_000);
+    tambahItem(10, "pisang goreng", 8_000);
+    tambahItem(11, "indomie goreng", 6_000);
+    tambahItem(12, "indomie rebus", 6_000);
+    tambahItem(13, "sosis goreng", 7_000);
+    tambahItem(14, "pancong", 13_000);
   }
 }
