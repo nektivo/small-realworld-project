@@ -1,12 +1,13 @@
 package com.cashier;
 
 public class Item {
+  // default variable
   private int max;
   public int index;
   public String[] namaItem;
   public int[] hargaItem;
 
-  // constructor
+  // Constructor of Item
   public Item(int storage) {
     this.max = storage;
     this.namaItem = new String[max];
@@ -14,34 +15,46 @@ public class Item {
     this.index = 0;
   }
 
+  // Display Menu
   public void tampilkanMenu(String[] nama, int[] harga) {
     System.out.println("Selamat Datang Di Warkop 76");
     System.out.println("\nNo.  Nama Menu        Harga    ");
     System.out.println("----------------------------");
+
     for (int i = 0; i < nama.length; i++) {
+      // Check if the array item name is null (empty)
       if (namaItem[i] != null) {
+        if (namaItem[i] == namaItem[0]) {
+          System.out.println("--- Drinks Menu");
+        }
+        if (namaItem[i] == namaItem[8]) {
+          System.out.println("--- Foods Menu");
+        }
         System.out.printf("%-3d. %-15s %6d\n", (i + 1), namaItem[i], hargaItem[i]);
       } else {
-        int sisaSlot = max - index;
+
+        // Calculate how many slots are left
         System.out.println("----------------------------");
-        System.out.println("Sisa slot menu : " + sisaSlot);
         return;
       }
     }
   }
 
+  // Add new Item
   public void tambahItem(String nama, int harga) {
     if (index < max) {
       this.namaItem[index] = nama;
       this.hargaItem[index] = harga;
       index++;
+
+      // Check whether the index exceeds the maximum value
     } else if (index == max + 1) {
       System.out.println("Menu sudah penuh!");
     }
   }
 
   public void listMenu() {
-    // menu minuman
+    // Drinks Menu
     tambahItem("air putih", 3_000);
     tambahItem("es teh", 4_000);
     tambahItem("kopi hitam", 5_000);
@@ -50,7 +63,7 @@ public class Item {
     tambahItem("es cappucino", 5_000);
     tambahItem("es jeruk", 5_000);
     tambahItem("susu jahe", 8_000);
-    // menu makanan
+    // Foods Menu
     tambahItem("kentang goreng", 9_000);
     tambahItem("roti bakar", 12_000);
     tambahItem("pisang goreng", 8_000);
