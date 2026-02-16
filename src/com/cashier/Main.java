@@ -7,8 +7,11 @@ public class Main {
 
     public static void main(String[] args) {
         Item menu = new Item(100);
+        Basket user = new Basket(menu);
 
         menu.listMenu();
         menu.displayMenu(menu.nameItem, menu.priceItem);
+        user.input();
+
     }
 }
