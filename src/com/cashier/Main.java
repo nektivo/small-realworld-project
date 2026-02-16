@@ -9,6 +9,6 @@ public class Main {
         Item menu = new Item(100);
 
         menu.listMenu();
-        menu.tampilkanMenu(menu.namaItem, menu.hargaItem);
+        menu.displayMenu(menu.nameItem, menu.priceItem);
     }
 }
