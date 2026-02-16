@@ -6,7 +6,7 @@ public class Main {
     static Scanner inputUser = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Item menu = new Item(14);
+        Item menu = new Item(100);
 
         menu.listMenu();
         menu.tampilkanMenu(menu.namaItem, menu.hargaItem);

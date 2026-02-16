@@ -15,14 +15,17 @@ public class Item {
   }
 
   public void tampilkanMenu(String[] nama, int[] harga) {
-    if (index == 0) {
-      System.out.println("Menu Kosong!");
-      return;
-    } else {
-      System.out.println("\nSelamat Datang Di Warkop 76");
-      System.out.println("----------List Menu----------");
-      for (int i = 0; i < nama.length; i++) {
-        System.out.printf("%d. %-15s %5d\n", (i + 1), namaItem[i], hargaItem[i]);
+    System.out.println("Selamat Datang Di Warkop 76");
+    System.out.println("\nNo.  Nama Menu        Harga    ");
+    System.out.println("----------------------------");
+    for (int i = 0; i < nama.length; i++) {
+      if (namaItem[i] != null) {
+        System.out.printf("%-3d. %-15s %6d\n", (i + 1), namaItem[i], hargaItem[i]);
+      } else {
+        int sisaSlot = max - index;
+        System.out.println("----------------------------");
+        System.out.println("Sisa slot menu : " + sisaSlot);
+        return;
       }
     }
   }
