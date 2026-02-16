@@ -32,8 +32,6 @@ public class Item {
         }
         System.out.printf("%-3d. %-15s %6d\n", (i + 1), nameItem[i], priceItem[i]);
       } else {
-
-        // Calculate how many slots are left
         System.out.println("----------------------------");
         return;
       }

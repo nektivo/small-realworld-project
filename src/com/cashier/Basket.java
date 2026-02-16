@@ -1,9 +1,6 @@
 package com.cashier;
 
 public class Basket {
-  int keranjang;
-  int jumlahItem;
-  double total;
   // Call Class Of Item
   private Item menu;
 
@@ -15,25 +12,25 @@ public class Basket {
     var check = true;
     while (check) {
       System.out.println("Continue shopping?");
-      System.out.print("Input item name or 'done': ");
+      System.out.print("Input item number or '0 to finish': ");
 
-      String text = Main.inputUser.nextLine();
+      int choiceMenu = Main.inputUser.nextInt();
 
-      if (text.equalsIgnoreCase("done")) {
+      if (choiceMenu - 1 < 0) {
         check = false;
         System.out.println("Thank you for shopping!");
       } else {
         // Proses input item
-        System.out.print("Enter quantity: ");
+        System.out.print("Input your quantity : ");
 
         try {
           int jumlah = Main.inputUser.nextInt();
           Main.inputUser.nextLine();
+          buyItem(choiceMenu - 1, jumlah);
 
           // Validasi jumlah
           if (jumlah > 0) {
-            menu.addItem(text, jumlah);
-            System.out.println(jumlah + " X " + text + " successfully added to cart");
+            System.out.println("successfully added to cart");
           } else {
             System.out.println("Quantity must be positive!");
           }
@@ -44,8 +41,16 @@ public class Basket {
       }
     }
   }
+
+  public void buyItem(int choice, int jumlah) {
+    if (menu != null && menu.index >= 0 && menu.index < menu.nameItem.length) {
+      String item = menu.nameItem[choice];
+      int total = menu.priceItem[choice] * jumlah;
+      System.out.println(jumlah + " x " + item + " = Rp " + total);
+    }
+  }
 }
-// tentukan jumlah item
+
 // tampilkan semua pembelian
 // hitung total pembelian
 // jenis pembayaran cash/qris
