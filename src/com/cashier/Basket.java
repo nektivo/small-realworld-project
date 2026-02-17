@@ -18,30 +18,33 @@ public class Basket {
       System.out.print("Input item number or '0 to finish': ");
 
       int choiceMenu = Main.inputUser.nextInt();
+      if (choiceMenu < menu.index) {
+        if (choiceMenu - 1 < 0) {
+          check = false;
+          Payment.allItem();
+        } else {
+          // Proses input item
 
-      if (choiceMenu - 1 < 0) {
-        check = false;
-        System.out.println("\nThank you for shopping!");
-        Payment.allItem();
-      } else {
-        // Proses input item
-        System.out.print("Enter the amount : ");
+          System.out.print("Enter the amount : ");
 
-        try {
-          int quantity = Main.inputUser.nextInt();
-          Main.inputUser.nextLine();
-          buyItem(choiceMenu - 1, quantity);
+          try {
+            int quantity = Main.inputUser.nextInt();
+            Main.inputUser.nextLine();
+            buyItem(choiceMenu - 1, quantity);
 
-          // Validasi quantity
-          if (quantity > 0) {
-            System.out.println("successfully added to cart");
-          } else {
-            System.out.println("Quantity must be positive!");
+            // Validasi quantity
+            if (quantity > 0) {
+              System.out.println("successfully added to cart");
+            } else {
+              System.out.println("Quantity must be positive!");
+            }
+          } catch (Exception e) {
+            System.out.println("Invalid input! Please enter a number");
+            Main.inputUser.nextLine();
           }
-        } catch (Exception e) {
-          System.out.println("Invalid input! Please enter a number");
-          Main.inputUser.nextLine();
         }
+      } else {
+        System.out.println("Over Number");
       }
     }
   }
