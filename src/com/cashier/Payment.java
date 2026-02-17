@@ -28,19 +28,36 @@ public class Payment {
 
   public static void allItem() {
     if (!purchasedItems.isEmpty()) {
-      int result = 0;
+      double result = 0;
       System.out.println("Daftar item yang telah dibeli:");
       for (PurchasedItem i : purchasedItems) {
         System.out.println(i.quantity + " x " + i.name + " = Rp " + i.total);
         result += i.total;
       }
-      System.out.println("Total harga : " + result);
+      getDiskon(result);
     } else {
       System.out.println("You haven't added any items yet");
+    }
+  }
+
+  public static void diskon(double amount, double discount) {
+    double diskon = amount * discount;
+    double totalbayar = amount - diskon;
+    System.out.println("Anda mendapat potongan harga " + discount + "% : " + (amount - diskon));
+    System.out.println("Total harga : " + totalbayar);
+
+  }
+
+  public static void getDiskon(double total) {
+    if (total >= 200_000) {
+      diskon(total, 0.1);
+    } else if (total >= 100_000) {
+      diskon(total, 0.05);
+    } else {
+      System.out.println("Total harga : " + total);
     }
   }
 }
 
 // jenis pembayaran cash/qris
 // cukup atau tidak, hitung kembalian
-// tetapkan diskon jika > 10000 5% / 200000 10%
