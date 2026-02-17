@@ -14,22 +14,6 @@ _All projects follow structured design principles and aim to teach core programm
 
 ---
 
-## 🚀 Table of Contents
-
-- [🧠 Overview](#🧠-overview)
-- [📌 Projects Included](#📌-projects-included)
-- [📂 Architecture & Design](#📂-architecture--design)
-- [⚙️ Getting Started](#⚙️-getting-started)
-  - [Requirements](#requirements)
-  - [Installation](#installation)
-  - [Usage](#usage)
-- [📘 Coding Standards](#📘-coding-standards)
-- [🧪 Testing](#🧪-testing)
-- [✨ Contributing](#✨-contributing)
-- [📄 License](#📄-license)
-
----
-
 ## 📌 Projects Included
 
 Each subproject is standalone and demonstrates a specific domain or pattern:
@@ -67,6 +51,7 @@ Every project follows Java best practices with:
 
 Example directory structure:
 
+```bash
 src/
 └── com/
 └── cashier/ # (Or other scenario folder)
@@ -74,6 +59,7 @@ src/
 ├── Model.java
 ├── Service.java
 └── Utils.java
+```
 
 ---
 
@@ -121,7 +107,7 @@ java com.<scenario>.Main
 
 💡 Replace `<scenario>` with the specific module folder (e.g., `cashier`, `boardinghouse`).
 
-📘 Coding Standards
+### 📘 Coding Standards
 
 - To maintain readability and quality:
 
@@ -133,15 +119,15 @@ java com.<scenario>.Main
 
 - Comment intent, not implementation
 
-🧪 Testing
+### 🧪 Testing
 
 These projects are designed for manual interaction testing. To improve:
 
-🔹 Add unit tests using JUnit
-🔹 Validate edge cases for inputs
-🔹 Automate scenario workflows
+- Add unit tests using JUnit
+- Validate edge cases for inputs
+- Automate scenario workflows
 
-✨ Contributing
+### ✨ Contributing
 
 Contributions are welcome! To add a new module or improve existing ones:
 
@@ -159,7 +145,7 @@ git checkout -b feature/<name>
 
 We value clear design, comments, and test coverage.
 
-📄 License
+### 📄 License
 
 Distributed under the **MIT License**.
 See `LICENSE` for details.
