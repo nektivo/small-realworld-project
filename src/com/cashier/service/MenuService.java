@@ -1,36 +1,29 @@
 package com.cashier.service;
 
-import com.cashier.model.PurchasedItem;
+import java.util.ArrayList;
+import com.cashier.model.MenuItem;
 
 public class MenuService {
-  // default variable
-  private int max;
-  public static int index;
-  public static String[] nameItem;
-  public static int[] priceItem;
+  private ArrayList<MenuItem> menu = new ArrayList<>();
 
-  // Constructor of Item
-  public MenuService(int storage) {
-    this.max = storage;
-    nameItem = new String[max];
-    priceItem = new int[max];
-    index = 0;
+  public MenuService() {
+    menu.add(new MenuItem("air putih", 3000));
+    menu.add(new MenuItem("es teh", 4000));
+    menu.add(new MenuItem("kopi hitam", 5000));
+    menu.add(new MenuItem("kopi susu", 6000));
+    menu.add(new MenuItem("hot chocolate", 7000));
+    menu.add(new MenuItem("es cappucino", 5000));
+    menu.add(new MenuItem("es jeruk", 5000));
+    menu.add(new MenuItem("susu jahe", 8000));
+    menu.add(new MenuItem("kentang goreng", 9000));
+    menu.add(new MenuItem("roti bakar", 12000));
   }
 
-  public static void allItem() {
-    if (!Payment.purchasedItems.isEmpty()) {
-      double result = 0;
-      System.out.println("Daftar item yang telah dibeli:");
-      for (PurchasedItem i : Payment.purchasedItems) {
-        System.out.println(i.quantity + " x " + i.name + " = Rp " + i.total);
-        result += i.total;
-      }
-      Payment.getDiskon(result);
-    } else {
-      System.out.println("You haven't added any items yet");
-
-      // Check whether the index exceeds the maximum value
-    }
+  public ArrayList<MenuItem> getMenu() {
+    return menu;
   }
 
+  public MenuItem getItem(int index) {
+    return menu.get(index);
+  }
 }

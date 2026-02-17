@@ -1,25 +1,21 @@
 package com.cashier.service;
 
+import java.util.ArrayList;
+import com.cashier.model.PurchasedItem;
 import com.cashier.model.MenuItem;
 
 public class Basket {
-  // default variable
-  public int[] keranjang;
+  private ArrayList<PurchasedItem> cart = new ArrayList<>();
 
-  // Call Class
-  public static MenuItem menu;
-
-  public Basket(MenuItem basket) {
-    menu = basket;
-    this.keranjang = new int[MenuService.index];
+  public void addItem(MenuItem item, int qty) {
+    cart.add(new PurchasedItem(item, qty));
   }
 
-  public static void buyItem(int choice, int quantity) {
-    if (menu != null && MenuService.index >= 0 && MenuService.index < MenuItem.nameItem.length) {
-      String item = MenuItem.nameItem[choice];
-      int total = MenuItem.priceItem[choice] * quantity;
-      System.out.println(quantity + " x " + item + " = Rp " + total);
-      Payment.addPurchasedItem(choice, quantity);
-    }
+  public ArrayList<PurchasedItem> getItems() {
+    return cart;
+  }
+
+  public boolean isEmpty() {
+    return cart.isEmpty();
   }
 }

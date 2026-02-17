@@ -1,17 +1,23 @@
 package com.cashier.model;
 
 public class PurchasedItem {
-  // default variable
-  public String name;
-  public int pricePerItem;
-  public int quantity;
-  public int total;
+  private MenuItem item;
+  private int quantity;
 
-  // constructor
-  public PurchasedItem(String name, int pricePerItem, int quantity) {
-    this.name = name;
-    this.pricePerItem = pricePerItem;
+  public PurchasedItem(MenuItem item, int quantity) {
+    this.item = item;
     this.quantity = quantity;
-    this.total = pricePerItem * quantity;
+  }
+
+  public int getTotal() {
+    return item.getPrice() * quantity;
+  }
+
+  public String getName() {
+    return item.getName();
+  }
+
+  public int getQuantity() {
+    return quantity;
   }
 }

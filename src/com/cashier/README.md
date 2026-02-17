@@ -57,8 +57,14 @@ src/
 └── cashier/ # (Or other scenario folder)
 ├── Main.java
 ├── Model.java
+    ├── MenuItem.java
+    └── PurchasedItem.java
 ├── Service.java
-└── Utils.java
+    ├── Basket.java
+    ├── MenuService.java
+    └── Payment.java
+└── UI.java
+    └── Console.java
 ```
 
 ---
@@ -91,7 +97,7 @@ cd small-realworld-project
 
 Find the project subfolder you want to compile.
 
-▶️ Usage
+### ▶️ Usage
 
 Compile the Java files:
 
