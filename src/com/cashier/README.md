@@ -1,122 +1,167 @@
-🧾 Warkop 76 Cashier Program
-A simple console-based cashier application written in Java that simulates ordering food and beverages at Warkop 76. Users can browse a menu, select items, specify quantities, and receive a detailed receipt with applicable discounts. Perfect for learning object-oriented programming and basic Java I/O.
+# 🧠 Small RealWorld Projects (Java)
 
-✨ Features
-✅ Pre‑defined Menu – Drinks and foods with names and prices.
+A curated collection of **small Java applications** that model real-world scenarios to improve **Object-Oriented Programming**, **clean code**, and **problem-solving skills**.  
+Each module provides a focused learning experience with practical application logic for everyday programming tasks.
 
-🛒 Interactive Ordering – Choose items by number, enter quantity, and get immediate subtotal feedback.
+This repository includes projects such as:
 
-🧾 Purchase Log – All selected items are stored and displayed at checkout.
+✔️ Cashier System  
+✔️ Boarding House Manager  
+✔️ Inventory System  
+✔️ Queue System
 
-🔢 Automatic Discounts –
-
-10% off for orders ≥ Rp 200.000
-
-5% off for orders ≥ Rp 100.000
-
-(Discount logic is ready but needs integration into the final receipt)
-
-📦 Modular Design – Four well‑separated classes (Main, Item, Basket, Payment).
-
-🗂️ Project Structure
-text
-com.cashier/
-├── Main.java # Entry point – initialises menu and starts ordering
-├── Item.java # Manages menu items (name + price)
-├── Basket.java # Handles user input and order processing
-├── Payment.java # Stores purchased items and prints the receipt
-└── (PurchasedItem inner class inside Payment)
-🧩 Class Details
-Class Responsibility Key Members
-Main Starts the program, creates the menu, and links Payment with it. static Scanner inputUser, main()
-Item Stores and displays the menu. String[] nameItem, int[] priceItem, addItem(), displayMenu()
-Basket Interacts with the user (item choice, quantity). buyItem(), input()
-Payment Keeps a list of purchased items and prints the final receipt. static ArrayList<PurchasedItem>, addPurchasedItem(), allItem()
-PurchasedItem (inner) Represents one line of the receipt. name, pricePerItem, quantity, total
-🚀 How to Run
-Prerequisites
-Java Development Kit (JDK) 8 or higher installed.
-
-A terminal / command prompt.
-
-Steps
-Clone or download the source files into a directory (preserve the package structure com/cashier/).
-
-Compile all Java files:
-
-bash
-javac com/cashier/\*.java
-Run the program:
-
-bash
-java com.cashier.Main
-⚠️ Important: Before running, make sure you have added the following line inside Main.java after creating the Item object:
-
-java
-Payment.menu = menu;
-Without this, Payment cannot access the menu and a NullPointerException will occur when you try to add items.
-
-🎮 Usage Example
-text
-WELCOME TO WARKOP 76
-
-## No. Name Menu Price
-
-Drinks Menu
-
-1.  air putih 3000
-2.  es teh 4000
-3.  kopi hitam 5000
-    ...
-    Foods Menu
-4.  kentang goreng 9000
-5.  roti bakar 12000
-    ...
+_All projects follow structured design principles and aim to teach core programming patterns in Java._
 
 ---
 
-Continue shopping?
-Input item number or '0 to finish': 3
-Enter the amount : 2
-2 x kopi hitam = Rp 10000
-successfully added to cart
+## 🚀 Table of Contents
 
-Continue shopping?
-Input item number or '0 to finish': 10
-Enter the amount : 1
-1 x roti bakar = Rp 12000
-successfully added to cart
+- [🧠 Overview](#🧠-overview)
+- [📌 Projects Included](#📌-projects-included)
+- [📂 Architecture & Design](#📂-architecture--design)
+- [⚙️ Getting Started](#⚙️-getting-started)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [Usage](#usage)
+- [📘 Coding Standards](#📘-coding-standards)
+- [🧪 Testing](#🧪-testing)
+- [✨ Contributing](#✨-contributing)
+- [📄 License](#📄-license)
 
-Continue shopping?
-Input item number or '0 to finish': 0
+---
 
-Thank you for shopping!
-Daftar item yang telah dibeli:
-2 x kopi hitam = Rp 10000
-1 x roti bakar = Rp 12000
-⚠️ Important Notes / Known Issues
-🔧 Missing Initialisation – As mentioned above, you must set Payment.menu = menu; in Main. This is the most common cause of runtime errors.
+## 📌 Projects Included
 
-🧮 Discount Integration – The discount logic (provided separately) is not yet applied to the final receipt. The current Payment.allItem() only shows raw totals without discounts. You can enhance it by calculating the total of all items and then applying the discount before printing.
+Each subproject is standalone and demonstrates a specific domain or pattern:
 
-📋 Menu Display – The method displayMenu() in Item uses name.length (the full array capacity) instead of index (the actual number of items). This may print many empty lines. Consider changing the loop condition to i < index.
+### 🛒 Cashier System
 
-🧪 Input Validation – Only basic exception handling is present; invalid menu numbers may cause an ArrayIndexOutOfBoundsException.
+A **console-based ordering system** where users can browse a menu, place orders, and view receipts with auto discounts.  
+Highlights: Menu management, interaction loop, purchase logging.
 
-🔮 Future Improvements
-Integrate discount calculation into the final receipt.
+### 🏘️ Boarding House Manager
 
-Replace fixed‑size arrays with ArrayList for the menu to allow dynamic addition/removal of items.
+Simulates tenant check-ins and check-outs for a boarding house.  
+Highlights: Object lists, status tracking, basic CRUD.
 
-Add input validation for menu choices (e.g., check range before accessing array).
+### 📦 Inventory System
 
-Implement a more user‑friendly interface (maybe a simple GUI).
+Tracks products, quantity levels, and updates stock through user interaction.  
+Highlights: Data encapsulation, state management, dynamic storage.
 
-Separate discount logic into its own utility class.
+### 📊 Queue System
 
-Add the ability to remove items from the cart.
+Implements a queue data structure as an application module for customer processing or task ordering.  
+Highlights: FIFO logic, queue operations, user controls.
+
+---
+
+## 📂 Architecture & Design
+
+Every project follows Java best practices with:
+
+- **Package-based structure**
+- **Separation of logic** (models, services, UI handling)
+- **Clean and readable source code**
+- **Consistent naming conventions**
+
+Example directory structure:
+
+src/
+└── com/
+└── cashier/ # (Or other scenario folder)
+├── Main.java
+├── Model.java
+├── Service.java
+└── Utils.java
+
+---
+
+## ⚙️ Getting Started
+
+### 🧰 Requirements
+
+Before running the code, make sure you have:
+
+✔️ Java Development Kit (JDK 8 or higher) installed  
+✔️ Terminal or command line access  
+✔️ Source code cloned
+
+---
+
+### 📥 Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/nektivo/small-realworld-project.git
+```
+
+Navigate into the project folder:
+
+```bash
+cd small-realworld-project
+```
+
+Find the project subfolder you want to compile.
+
+▶️ Usage
+
+Compile the Java files:
+
+```bash
+javac com/<scenario>/*.java
+```
+
+Execute the main class:
+
+```bash
+java com.<scenario>.Main
+```
+
+💡 Replace `<scenario>` with the specific module folder (e.g., `cashier`, `boardinghouse`).
+
+📘 Coding Standards
+
+- To maintain readability and quality:
+
+- Use clear and descriptive class/method names
+
+- Group related logic into separate packages
+
+- Avoid large methods by applying single-responsibility principle
+
+- Comment intent, not implementation
+
+🧪 Testing
+
+These projects are designed for manual interaction testing. To improve:
+
+🔹 Add unit tests using JUnit
+🔹 Validate edge cases for inputs
+🔹 Automate scenario workflows
+
+✨ Contributing
+
+Contributions are welcome! To add a new module or improve existing ones:
+
+1. Fork the repo
+
+2. Create a feature branch:
+
+```bash
+git checkout -b feature/<name>
+```
+
+3. Commit improvements
+
+4. Open a Pull Request
+
+We value clear design, comments, and test coverage.
 
 📄 License
-This project is open source and available for educational purposes. Feel free to use, modify, and distribute it as you like.
 
-Happy Coding! ☕🍟
+Distributed under the **MIT License**.
+See `LICENSE` for details.
+
+Happy coding — build practical skills with every commit! 🚀
