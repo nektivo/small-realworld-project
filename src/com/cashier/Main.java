@@ -1,18 +1,14 @@
 package com.cashier;
 
-import java.util.Scanner;
+import com.cashier.model.MenuItem;
+import com.cashier.ui.Console;
 
 public class Main {
-    static Scanner inputUser = new Scanner(System.in);
-
     public static void main(String[] args) {
-        Item menu = new Item(100);
-        Basket user = new Basket(menu);
-        Payment.menu = menu;
+        MenuItem menu = new MenuItem(100);
 
         menu.listMenu();
-        menu.displayMenu(menu.nameItem, menu.priceItem);
-        user.input();
-
+        Console.displayMenu(MenuItem.nameItem, MenuItem.priceItem);
+        Console.input();
     }
 }
