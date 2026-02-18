@@ -16,7 +16,11 @@ public class MenuService {
     menu.add(new MenuItem("es jeruk", 5000));
     menu.add(new MenuItem("susu jahe", 8000));
     menu.add(new MenuItem("kentang goreng", 9000));
-    menu.add(new MenuItem("roti bakar", 12000));
+    menu.add(new MenuItem("Sosis goreng", 8000));
+    menu.add(new MenuItem("Indomie goreng", 6000));
+    menu.add(new MenuItem("Indomie rebus", 6000));
+    menu.add(new MenuItem("Pancong", 13000));
+    menu.add(new MenuItem("Nasi Goreng", 13000));
   }
 
   public ArrayList<MenuItem> getMenu() {
