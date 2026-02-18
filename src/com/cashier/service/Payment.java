@@ -1,6 +1,7 @@
 package com.cashier.service;
 
 import com.cashier.model.PurchasedItem;
+import com.cashier.ui.Console;
 
 public class Payment {
 
@@ -25,5 +26,22 @@ public class Payment {
     double finalResult = total - result;
     System.out.println("You get a discount " + discount + "% : Rp " + result);
     return finalResult;
+  }
+
+  public static void calculatePayment(double total) {
+    boolean valid = true;
+    do {
+      System.out.print("Enter the amount : ");
+      double pay = Console.input.nextDouble();
+      Console.input.nextLine();
+
+      if (pay < total) {
+        System.out.println("Insufficient funds");
+      } else {
+        double change = pay - total;
+        System.out.println("Change: " + change);
+        valid = false;
+      }
+    } while (valid);
   }
 }

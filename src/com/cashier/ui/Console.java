@@ -5,13 +5,14 @@ import com.cashier.service.*;
 import com.cashier.model.*;
 
 public class Console {
-  private static Scanner input = new Scanner(System.in);
+  public static Scanner input = new Scanner(System.in);
 
   public static void start(MenuService menuService, Basket basket) {
     while (true) {
       displayMenu(menuService);
       System.out.print("Choice The Menu (write '0' to finish): ");
       int choice = input.nextInt();
+      input.nextLine();
 
       if (choice == 0)
         break;
@@ -22,6 +23,7 @@ public class Console {
 
       System.out.print("Quantity : ");
       int qty = input.nextInt();
+      input.nextLine();
       if (qty <= 0) {
         System.out.println("Quantity Must More Than 0");
         continue;
@@ -35,7 +37,7 @@ public class Console {
   }
 
   private static void displayMenu(MenuService menuService) {
-    System.out.println("\n---------- WARKOP 76 ---------");
+    System.out.println("\n--------- WARKOP 76 ---------");
     System.out.println("No. Menu Nama     Harga     ");
     Basket.buildLine();
     int i = 1;
@@ -49,6 +51,25 @@ public class Console {
         Basket.buildLine();
       }
       System.out.printf("%d. %-14s Rp %6d\n", i++, item.getName(), item.getPrice());
+    }
+  }
+
+  public static void paymentType(double total) {
+    boolean check = true;
+    while (check) {
+      System.out.print("Payment Type : ");
+      String inputPay = input.nextLine();
+      if (inputPay.equalsIgnoreCase("qris")) {
+        new QrisFrame().setVisible(true);
+        check = false;
+      } else if (inputPay.equalsIgnoreCase("cash")) {
+        Payment.calculatePayment(total);
+        double finalTotal = Payment.applyDiscount(total);
+        System.out.println("Payment : Rp " + finalTotal);
+        check = false;
+      } else {
+        System.out.println("Choose a valid payment method");
+      }
     }
   }
 
@@ -67,8 +88,7 @@ public class Console {
     Basket.buildLine();
 
     System.out.println("Total: Rp " + total);
-    double finalTotal = Payment.applyDiscount(total);
-    System.out.println("Payment : Rp " + finalTotal);
+    paymentType(total);
     Basket.buildLine();
     System.out.println("\nThank You For Shopping!");
   }
