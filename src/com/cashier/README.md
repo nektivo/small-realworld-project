@@ -1,159 +1,171 @@
-# 🧠 Small RealWorld Projects (Java)
+# 🧾 Warkop 76 – Cashier System (Java)
 
-A curated collection of **small Java applications** that model real-world scenarios to improve **Object-Oriented Programming**, **clean code**, and **problem-solving skills**.  
-Each module provides a focused learning experience with practical application logic for everyday programming tasks.
+A **console-based cashier application** written in **Java** that simulates ordering food and beverages at _Warkop 76_.  
+This project is designed as a **small real-world application** to practice:
 
-This repository includes projects such as:
-
-✔️ Cashier System  
-✔️ Boarding House Manager  
-✔️ Inventory System  
-✔️ Queue System
-
-_All projects follow structured design principles and aim to teach core programming patterns in Java._
+- Object-Oriented Programming (OOP)
+- Clean architecture
+- Input validation
+- Business logic separation
 
 ---
 
-## 📌 Projects Included
+## ✨ Features
 
-Each subproject is standalone and demonstrates a specific domain or pattern:
+✅ Predefined menu (drinks & foods)  
+🛒 Interactive ordering via console  
+🧾 Purchase receipt with itemized list  
+🔢 Automatic discount system  
+📦 Modular architecture (Model – Service – UI)
 
-### 🛒 Cashier System
+### Discount Rules
 
-A **console-based ordering system** where users can browse a menu, place orders, and view receipts with auto discounts.  
-Highlights: Menu management, interaction loop, purchase logging.
-
-### 🏘️ Boarding House Manager
-
-Simulates tenant check-ins and check-outs for a boarding house.  
-Highlights: Object lists, status tracking, basic CRUD.
-
-### 📦 Inventory System
-
-Tracks products, quantity levels, and updates stock through user interaction.  
-Highlights: Data encapsulation, state management, dynamic storage.
-
-### 📊 Queue System
-
-Implements a queue data structure as an application module for customer processing or task ordering.  
-Highlights: FIFO logic, queue operations, user controls.
+| Total Purchase | Discount |
+| -------------- | -------- |
+| ≥ Rp 200.000   | 10%      |
+| ≥ Rp 100.000   | 5%       |
+| < Rp 100.000   | None     |
 
 ---
 
-## 📂 Architecture & Design
-
-Every project follows Java best practices with:
-
-- **Package-based structure**
-- **Separation of logic** (models, services, UI handling)
-- **Clean and readable source code**
-- **Consistent naming conventions**
-
-Example directory structure:
+## 🗂 Project Structure
 
 ```bash
 src/
 └── com/
-└── cashier/ # (Or other scenario folder)
+└── cashier/
 ├── Main.java
-├── Model.java
-    ├── MenuItem.java
-    └── PurchasedItem.java
-├── Service.java
-    ├── Basket.java
-    ├── MenuService.java
-    └── Payment.java
-└── UI.java
-    └── Console.java
+├── model/
+│ ├── MenuItem.java
+│ └── PurchasedItem.java
+├── service/
+│ ├── MenuService.java
+│ ├── Basket.java
+│ └── Payment.java
+└── ui/
+└── Console.java
 ```
 
 ---
 
-## ⚙️ Getting Started
+## 🧩 Class Responsibilities
 
-### 🧰 Requirements
+| Class           | Responsibility                               |
+| --------------- | -------------------------------------------- |
+| `Main`          | Entry point of the program                   |
+| `MenuItem`      | Represents a menu item (name & price)        |
+| `PurchasedItem` | Represents an ordered item (menu + quantity) |
+| `MenuService`   | Manages menu data                            |
+| `Basket`        | Stores ordered items                         |
+| `Payment`       | Calculates total and applies discount        |
+| `Console`       | Handles user input & output                  |
 
-Before running the code, make sure you have:
+---
 
-✔️ Java Development Kit (JDK 8 or higher) installed  
-✔️ Terminal or command line access  
-✔️ Source code cloned
+## 🚀 Getting Started
+
+### 📌 Prerequisites
+
+- Java Development Kit (**JDK 8+**)
+- Terminal / Command Prompt
 
 ---
 
 ### 📥 Installation
 
-1. Clone the repository:
+Clone the repository:
 
 ```bash
-git clone https://github.com/nektivo/small-realworld-project.git
+git clone https://github.com/<your-username>/cashier-project.git
+cd cashier-project
 ```
 
-Navigate into the project folder:
+### ▶️ Compile & Run
+
+Compile:
 
 ```bash
-cd small-realworld-project
+javac com/cashier/**/*.java
 ```
 
-Find the project subfolder you want to compile.
-
-### ▶️ Usage
-
-Compile the Java files:
+Run:
 
 ```bash
-javac com/<scenario>/*.java
+java com.cashier.Main
 ```
 
-Execute the main class:
+### 🎮 Usage Example
 
 ```bash
-java com.<scenario>.Main
+=== WARKOP 76 ===
+1. air putih        Rp 3000
+2. es teh           Rp 4000
+3. kopi hitam       Rp 5000
+4. kopi susu        Rp 6000
+5. hot chocolate    Rp 7000
+6. es cappucino     Rp 5000
+7. es jeruk         Rp 5000
+8. susu jahe        Rp 8000
+9. kentang goreng   Rp 9000
+10. roti bakar      Rp 12000
+
+Pilih menu (0 untuk selesai): 3
+Jumlah: 2
+Berhasil ditambahkan!
+
+Pilih menu (0 untuk selesai): 10
+Jumlah: 1
+Berhasil ditambahkan!
+
+=== STRUK ===
+2 x kopi hitam = Rp 10000
+1 x roti bakar = Rp 12000
+Total: Rp 22000
+Bayar: Rp 22000
+Terima kasih!
 ```
 
-💡 Replace `<scenario>` with the specific module folder (e.g., `cashier`, `boardinghouse`).
+### 🧠 Design Principles Applied
 
-### 📘 Coding Standards
+- Single Responsibility Principle
+  Each class has one responsibility only.
 
-- To maintain readability and quality:
+- Encapsulation
+  Data is accessed through objects, not static global variables.
 
-- Use clear and descriptive class/method names
+- Low Coupling
+  UI, logic, and data are separated.
 
-- Group related logic into separate packages
+- Extensible
+  Easy to add:
+  - GUI
+  - Database
+  - Payment gateway
+  - API layer
 
-- Avoid large methods by applying single-responsibility principle
+### ⚠ Known Limitations
 
-- Comment intent, not implementation
+- Console-based interface only
+- No persistent storage (data resets on restart)
+- No item removal feature yet
+
+### 🔮 Future Improvements
+
+- Add remove item from cart
+- Add payment method (cash & QRIS)
+- Store transactions in file or database
+- Convert to GUI (JavaFX)
+- Convert to REST API (Spring Boot)
+- Add unit tests (JUnit)
 
 ### 🧪 Testing
 
-These projects are designed for manual interaction testing. To improve:
-
-- Add unit tests using JUnit
-- Validate edge cases for inputs
-- Automate scenario workflows
-
-### ✨ Contributing
-
-Contributions are welcome! To add a new module or improve existing ones:
-
-1. Fork the repo
-
-2. Create a feature branch:
-
-```bash
-git checkout -b feature/<name>
-```
-
-3. Commit improvements
-
-4. Open a Pull Request
-
-We value clear design, comments, and test coverage.
+Currently tested manually via console input.
+Future testing can be implemented using JUnit.
 
 ### 📄 License
 
-Distributed under the **MIT License**.
-See `LICENSE` for details.
+This project is released for **educational purposes.**
+You are free to use, modify, and distribute this project.
 
-Happy coding — build practical skills with every commit! 🚀
+☕ Happy Coding – Learn by building real systems!
