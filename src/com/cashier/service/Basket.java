@@ -18,4 +18,11 @@ public class Basket {
   public boolean isEmpty() {
     return cart.isEmpty();
   }
+
+  public static void buildLine() {
+    for (int i = 0; i < 30; i++) {
+      System.out.print("-");
+    }
+    System.out.println();
+  }
 }
