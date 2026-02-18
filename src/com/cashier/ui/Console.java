@@ -35,10 +35,20 @@ public class Console {
   }
 
   private static void displayMenu(MenuService menuService) {
-    System.out.println("\n--- WARKOP 76 ---");
+    System.out.println("\n---------- WARKOP 76 ---------");
+    System.out.println("No. Menu Nama     Harga     ");
+    Basket.buildLine();
     int i = 1;
     for (MenuItem item : menuService.getMenu()) {
-      System.out.printf("%d. %-15s Rp %d\n", i++, item.getName(), item.getPrice());
+      if (i == 1) {
+        System.out.println("\nDrinks Menu");
+        Basket.buildLine();
+      }
+      if (i == 9) {
+        System.out.println("\nFoods Menu");
+        Basket.buildLine();
+      }
+      System.out.printf("%d. %-14s Rp %6d\n", i++, item.getName(), item.getPrice());
     }
   }
 
@@ -48,16 +58,18 @@ public class Console {
       return;
     }
 
+    System.out.println("\n---------- RECEIPT ----------");
     double total = Payment.calculateTotal(basket);
-    double finalTotal = Payment.applyDiscount(total);
 
-    System.out.println("\n--- RECEIPT ---");
     for (PurchasedItem p : basket.getItems()) {
       System.out.println(p.getQuantity() + " x " + p.getName() + " = Rp " + p.getTotal());
     }
+    Basket.buildLine();
 
     System.out.println("Total: Rp " + total);
+    double finalTotal = Payment.applyDiscount(total);
     System.out.println("Payment : Rp " + finalTotal);
-    System.out.println("Thank You!");
+    Basket.buildLine();
+    System.out.println("\nThank You For Shopping!");
   }
 }
