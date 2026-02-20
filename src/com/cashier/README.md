@@ -38,6 +38,8 @@ src/
 ├── model/
 │ ├── MenuItem.java
 │ └── PurchasedItem.java
+├── resource/
+│ └── qris.jpg
 ├── service/
 │ ├── MenuService.java
 │ ├── Basket.java
@@ -152,9 +154,7 @@ Terima kasih!
 ### 🔮 Future Improvements
 
 - Add remove item from cart
-- Add payment method (cash & QRIS)
 - Store transactions in file or database
-- Convert to GUI (JavaFX)
 - Convert to REST API (Spring Boot)
 - Add unit tests (JUnit)
 
@@ -168,4 +168,4 @@ Future testing can be implemented using JUnit.
 This project is released for **educational purposes.**
 You are free to use, modify, and distribute this project.
 
-☕ Happy Coding – Learn by building real systems!
+##### Happy Coding – Learn by building real systems!
