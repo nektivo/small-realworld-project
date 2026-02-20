@@ -57,15 +57,13 @@ public class Console {
   public static void paymentType(double total) {
     boolean check = true;
     while (check) {
-      System.out.print("Payment Type : ");
+      System.out.print("Payment Type (Cash / Qris): ");
       String inputPay = input.nextLine();
       if (inputPay.equalsIgnoreCase("qris")) {
         new QrisFrame().setVisible(true);
         check = false;
       } else if (inputPay.equalsIgnoreCase("cash")) {
         Payment.calculatePayment(total);
-        double finalTotal = Payment.applyDiscount(total);
-        System.out.println("Payment : Rp " + finalTotal);
         check = false;
       } else {
         System.out.println("Choose a valid payment method");
