@@ -18,14 +18,13 @@ public class Payment {
       return getDiscount(total, 0.1);
     if (total >= 100_000)
       return getDiscount(total, 0.05);
-    return total;
+    return 0;
   }
 
   public static double getDiscount(double total, double discount) {
     double result = total * discount;
-    double finalResult = total - result;
     System.out.println("You get a discount " + discount + "% : Rp " + result);
-    return finalResult;
+    return result;
   }
 
   public static void calculatePayment(double total) {
@@ -38,7 +37,8 @@ public class Payment {
       if (pay < total) {
         System.out.println("Insufficient funds");
       } else {
-        double change = pay - total;
+        double discount = applyDiscount(total);
+        double change = pay - (total - discount);
         System.out.println("Change: " + change);
         valid = false;
       }
