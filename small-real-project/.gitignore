@@ -1,21 +1,15 @@
-# Compiled Java files
+# Java: Abaikan semua folder bin di proyek manapun
+**/bin/
+
+# VS Code: Abaikan folder settingan
+**/.vscode/
+
+# IntelliJ / Eclipse
 *.class
-
-# Output folders (VS Code & Java)
-bin/
-out/
-
-# VS Code
-.vscode/
-
-# Java project files
 .project
 .classpath
 .settings/
 
-# Logs
-*.log
-
-# OS junk
+# OS Files
 .DS_Store
 Thumbs.db
