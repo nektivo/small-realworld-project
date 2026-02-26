@@ -1,58 +1,66 @@
-# 🌍 Small Real-World Java Projects
+# 🧾 Warkop 76 – Cashier System (Java)
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
-![OOP](https://img.shields.io/badge/OOP-Practice-blue?style=for-the-badge)
-![Console App](https://img.shields.io/badge/Type-Console%20Application-green?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)
-
-A curated collection of **small Java applications** based on **real-world scenarios** to practice:
+A **console-based cashier application** written in **Java** that simulates ordering food and beverages at _Warkop 76_.  
+This project is designed as a **small real-world application** to practice:
 
 - Object-Oriented Programming (OOP)
-- Clean code principles
-- Logical problem solving
-- Basic software architecture
-
-This repository is intended for **learning by building**, where each project simulates a real business or system case using Java.
+- Clean architecture
+- Input validation
+- Business logic separation
 
 ---
 
-## 📦 Projects Included
+## ✨ Features
 
-Each project is independent and focuses on a specific real-world domain:
+✅ Predefined menu (drinks & foods)  
+🛒 Interactive ordering via console  
+🧾 Purchase receipt with itemized list  
+🔢 Automatic discount system  
+📦 Modular architecture (Model – Service – UI)
 
-| Project                  | Description                                                            |
-| ------------------------ | ---------------------------------------------------------------------- |
-| 🧾 Cashier System        | Simulates a food & beverage ordering system with receipt and discounts |
-| 🏠 Boarding House System | Manages room occupancy and tenant data                                 |
-| 📦 Inventory System      | Tracks product stock and updates quantities                            |
-| ⏳ Queue System          | Simulates a queue mechanism for customers or tasks                     |
+### Discount Rules
 
----
-
-## 🎯 Learning Objectives
-
-By working through these projects, you will learn how to:
-
-- Design classes using OOP principles
-- Separate business logic from user interface
-- Handle user input and validation
-- Build modular and maintainable code
-- Simulate real-world processes using Java
+| Total Purchase | Discount |
+| -------------- | -------- |
+| ≥ Rp 200.000   | 10%      |
+| ≥ Rp 100.000   | 5%       |
+| < Rp 100.000   | None     |
 
 ---
 
-## 🗂 Repository Structure
+## 🗂 Project Structure
 
 ```bash
 src/
 └── com/
-└── cashier/ # Cashier system project
-└── boardinghouse/ # Boarding house project
-└── inventory/ # Inventory system project
-└── queue/ # Queue system project
+└── cashier/
+├── Main.java
+├── model/
+│ ├── MenuItem.java
+│ └── PurchasedItem.java
+├── resource/
+│ └── qris.jpg
+├── service/
+│ ├── MenuService.java
+│ ├── Basket.java
+│ └── Payment.java
+└── ui/
+└── Console.java
 ```
 
-Each folder contains a complete standalone program.
+---
+
+## 🧩 Class Responsibilities
+
+| Class           | Responsibility                               |
+| --------------- | -------------------------------------------- |
+| `Main`          | Entry point of the program                   |
+| `MenuItem`      | Represents a menu item (name & price)        |
+| `PurchasedItem` | Represents an ordered item (menu + quantity) |
+| `MenuService`   | Manages menu data                            |
+| `Basket`        | Stores ordered items                         |
+| `Payment`       | Calculates total and applies discount        |
+| `Console`       | Handles user input & output                  |
 
 ---
 
@@ -60,69 +68,104 @@ Each folder contains a complete standalone program.
 
 ### 📌 Prerequisites
 
-- Java Development Kit (JDK 8 or higher)
-- Terminal or Command Prompt
-- Basic understanding of Java syntax
+- Java Development Kit (**JDK 8+**)
+- Terminal / Command Prompt
 
 ---
 
-### ▶️ How to Run a Project
+### 📥 Installation
 
-1. Navigate to the project folder:
-
-```bash
-cd src/com/cashier
-```
-
-2. Compile:
+Clone the repository:
 
 ```bash
-javac *.java
+git clone https://github.com/<your-username>/cashier-project.git
+cd cashier-project
 ```
 
-3. Run:
+### ▶️ Compile & Run
+
+Compile:
 
 ```bash
-java Main
+javac com/cashier/**/*.java
 ```
 
-Replace `cashier` with any other project folder.
+Run:
 
-### 🧠 Design Philosophy
+```bash
+java com.cashier.Main
+```
 
-**Simple, readable, and educational**
+### 🎮 Usage Example
 
-- No unnecessary frameworks
-- Focused on core Java concepts
-- Realistic use cases instead of abstract exercises
+```bash
+=== WARKOP 76 ===
+1. air putih        Rp 3000
+2. es teh           Rp 4000
+3. kopi hitam       Rp 5000
+4. kopi susu        Rp 6000
+5. hot chocolate    Rp 7000
+6. es cappucino     Rp 5000
+7. es jeruk         Rp 5000
+8. susu jahe        Rp 8000
+9. kentang goreng   Rp 9000
+10. roti bakar      Rp 12000
 
-### 🔮 Future Plans
+Pilih menu (0 untuk selesai): 3
+Jumlah: 2
+Berhasil ditambahkan!
 
-- Add more real-world scenarios
-- Improve UI and UX
-- Add unit testing (JUnit)
-- Add UML diagrams
-- Refactor to GUI / REST API versions
+Pilih menu (0 untuk selesai): 10
+Jumlah: 1
+Berhasil ditambahkan!
 
-### 🤝 Contributing
+=== STRUK ===
+2 x kopi hitam = Rp 10000
+1 x roti bakar = Rp 12000
+Total: Rp 22000
+Bayar: Rp 22000
+Terima kasih!
+```
 
-**Contributions are welcome for:**
+### 🧠 Design Principles Applied
 
-- New project ideas
-- Bug fixes
-- Code refactoring
-- Documentation improvement
+- Single Responsibility Principle
+  Each class has one responsibility only.
 
-Steps:
+- Encapsulation
+  Data is accessed through objects, not static global variables.
 
-1. Fork this repository
-2. Create a new branch
-3. Commit your changes
-4. Open a Pull Request
+- Low Coupling
+  UI, logic, and data are separated.
+
+- Extensible
+  Easy to add:
+  - GUI
+  - Database
+  - Payment gateway
+  - API layer
+
+### ⚠ Known Limitations
+
+- Console-based interface only
+- No persistent storage (data resets on restart)
+- No item removal feature yet
+
+### 🔮 Future Improvements
+
+- Add remove item from cart
+- Store transactions in file or database
+- Convert to REST API (Spring Boot)
+- Add unit tests (JUnit)
+
+### 🧪 Testing
+
+Currently tested manually via console input.
+Future testing can be implemented using JUnit.
 
 ### 📄 License
 
-This project is licensed under the **MIT License**.
-You are free to use, modify, and distribute this project for learning and educational purposes.
+This project is released for **educational purposes.**
+You are free to use, modify, and distribute this project.
 
-##### Happy coding — build small, think big.
+##### Happy Coding – Learn by building real systems!
